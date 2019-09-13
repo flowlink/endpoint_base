@@ -9,8 +9,8 @@ module EndpointBase::Concerns
         helper Helpers
 
         before_action do
-          prepare_payload params
-          prepare_config params
+          prepare_payload(params)
+          prepare_config(params)
         end
 
       elsif EndpointBase.sinatra?
@@ -27,11 +27,11 @@ module EndpointBase::Concerns
               Airbrake.notify(e, parameters: @payload) if Object.const_defined?('Airbrake')
               Rollbar.error(e, parameters: @payload) if Object.const_defined?('Rollbar')
 
-              halt 406
+              halt(406)
             end
 
-            prepare_payload parsed
-            prepare_config parsed
+            prepare_payload(parsed)
+            prepare_config(parsed)
           end
         end
       end
@@ -44,13 +44,7 @@ module EndpointBase::Concerns
     end
 
     def prepare_config(hsh)
-      if hsh.key? 'parameters'
-        if hsh['parameters'].is_a? Hash
-          @config = hsh['parameters']
-        end
-      end
-
-      @config ||= {}
+      @config = hsh['parameters']
     end
 
     module Helpers

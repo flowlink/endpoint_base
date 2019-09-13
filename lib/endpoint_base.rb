@@ -1,5 +1,8 @@
 module EndpointBase
   def self.framework
+    puts "TEST"
+    puts Rails
+    puts Rails.inspect
     if defined?(Rails)
       :rails
     elsif defined?(Sinatra)

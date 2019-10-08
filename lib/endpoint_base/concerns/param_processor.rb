@@ -9,6 +9,10 @@ module EndpointBase::Concerns
         helper Helpers
 
         before_action do
+          puts "*" * 100
+          puts "Before action, prepare params"
+          puts params.inspect
+          puts "*" * 100
           prepare_payload(params)
           prepare_config(params)
         end
@@ -44,7 +48,12 @@ module EndpointBase::Concerns
     end
 
     def prepare_config(hsh)
-      @config = hsh['parameters']
+      puts "*" * 100
+      puts "prepare config"
+      puts hsh.inspect
+      puts "*" * 100
+      # @config = hsh['parameters']
+      @config = hsh[:parameters]
     end
 
     module Helpers

@@ -45,9 +45,7 @@ module EndpointBase::Concerns
 
     def prepare_config(hsh)
       if hsh.key? 'parameters'
-        if hsh['parameters'].is_a? Hash
-          @config = hsh['parameters']
-        end
+        @config = hsh['parameters']
       end
 
       @config ||= {}

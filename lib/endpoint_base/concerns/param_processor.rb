@@ -51,6 +51,14 @@ module EndpointBase::Concerns
       @config ||= {}
     end
 
+    def payload
+      @payload
+    end
+
+    def config
+      @config
+    end
+
     module Helpers
       def store_id
         @config['store_id']

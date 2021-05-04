@@ -58,7 +58,7 @@ class TestEndpoint < EndpointBase::Sinatra::Base
 
   # used to verify parameters are correctly stored in @config
   post '/config' do
-    add_value :params, @config
+    add_value :params, @configuration
 
     process_result 200
   end

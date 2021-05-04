@@ -37,7 +37,7 @@ module EndpointBase::Concerns
 
     module RailsHelpers
       def endpoint_key(key)
-        prepend_before_filter do |controller|
+        prepend_before_action do |controller|
           controller.instance_variable_set(:@endpoint_key, key)
         end
       end

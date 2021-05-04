@@ -22,15 +22,16 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'json'
   gem.add_dependency 'jbuilder'
   gem.add_dependency 'activesupport'
+  gem.add_dependency 'tzinfo-data'
 
   #sinatra
-  gem.add_development_dependency 'sinatra', '1.4.3'
+  gem.add_development_dependency 'sinatra'
   gem.add_development_dependency 'sinatra-contrib'
   gem.add_development_dependency 'tilt-jbuilder'
   gem.add_development_dependency 'rack-test'
 
   #rails
-  gem.add_development_dependency 'rails', "~> 4.0.0"
+  gem.add_development_dependency 'rails', '~> 6'
   gem.add_development_dependency 'rspec-rails'
   gem.add_development_dependency 'sqlite3'
 

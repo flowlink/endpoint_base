@@ -10,7 +10,7 @@ module EndpointBase::Concerns
 
         before_action do
           prepare_payload params
-          prepare_config params
+          prepare_configuration params
         end
 
       elsif EndpointBase.sinatra?
@@ -31,7 +31,7 @@ module EndpointBase::Concerns
             end
 
             prepare_payload parsed
-            prepare_config parsed
+            prepare_configuration parsed
           end
         end
       end
@@ -43,25 +43,25 @@ module EndpointBase::Concerns
       @payload = hsh
     end
 
-    def prepare_config(hsh)
+    def prepare_configuration(hsh)
       if hsh.key? 'parameters'
-        @config = hsh['parameters']
+        @configuration = hsh['parameters']
       end
 
-      @config ||= {}
+      @configuration ||= {}
     end
 
     def payload
       @payload
     end
 
-    def config
-      @config
+    def configuration
+      @configuration
     end
 
     module Helpers
       def store_id
-        @config['store_id']
+        @configuration['store_id']
       end
     end
   end

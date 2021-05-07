@@ -12,25 +12,25 @@ describe FailingController, type: 'controller' do
 
 
   it "renders the 500.json page on exceptions" do
-    post :index, message
+    post :index, params: message
 
-    response.code.should eq '500'
-    json_response['summary'].should eq 'I see dead people'
-    json_response['request_id'].should eq 'abc'
+    expect(response.code).to eq('500')
+    expect(json_response['summary']).to eq('I see dead people')
+    expect(json_response['request_id']).to eq('abc')
   end
 
   it "return 401 on authorization failues" do
     request.env['HTTP_X_HUB_TOKEN'] = 'wrong'
-    post :index, message
+    post :index, params: message
 
-    response.code.should eq '401'
-    json_response['text'].should eq 'unauthorized'
+    expect(response.code).to eq('401')
+    expect(json_response['text']).to eq('unauthorized')
   end
 
   it 'can set response code and set summary with a single call' do
-    post :failure, message
+    post :failure, params: message
 
-    response.code.should eq '500'
-    json_response['summary'].should  == 'this was a failure'
+    expect(response.code).to eq('500')
+    expect(json_response['summary']).to eq('this was a failure')
   end
 end

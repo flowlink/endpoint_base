@@ -29,7 +29,7 @@ module EndpointBase::Concerns
           @attrs = response
         end
 
-        halt jbuilder(:'response.json', views: "#{EndpointBase.path_to_views}/application")
+        halt jbuilder(:'response', views: "#{EndpointBase.path_to_views}/application")
       end
     end
   end

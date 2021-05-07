@@ -12,17 +12,17 @@ describe NoAuthController, type: 'controller' do
 
 
   it 'ignores auth header, if endpoint_key not set' do
-    post :index, message
+    post :index, params: message
 
-    response.code.should eq '200'
-    json_response['summary'].should  == 'success without auth'
+    expect(response.code).to eq('200')
+    expect(json_response['summary']).to eq('success without auth')
   end
 
   it 'succeeds without auth header' do
     request.env.delete 'HTTP_X_HUB_TOKEN'
-    post :index, message
+    post :index, params: message
 
-    response.code.should eq '200'
-    json_response['summary'].should  == 'success without auth'
+    expect(response.code).to eq('200')
+    expect(json_response['summary']).to eq('success without auth')
   end
 end

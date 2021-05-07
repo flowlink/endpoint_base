@@ -12,23 +12,22 @@ describe HappyController, type: 'controller' do
 
 
   it 'render populated response' do
-    post :index, message
+    post :index, params: message
 
-    response.code.should eq '200'
+    expect(response.code).to eq('200')
 
-    json_response['products'].size.should == 1
+    expect(json_response['products'].size).to eq(1)
     product = json_response['products'].first
-    product['id'].should == 1
+    expect(product['id']).to eq(1)
 
-    json_response['parameters']['spree.order_poll.last_updated_at'].should  == 'today'
-
-    json_response['summary'].should  == 'today is a good day to ...'
+    expect(json_response['parameters']['spree.order_poll.last_updated_at']).to eq('today')
+    expect(json_response['summary']).to eq('today is a good day to ...')
   end
 
   it 'can set response code and set summary with a single call' do
-    post :success, message
+    post :success, params: message
 
-    response.code.should eq '200'
-    json_response['summary'].should  == 'this was a success'
+    expect(response.code).to eq('200')
+    expect(json_response['summary']).to eq('this was a success')
   end
 end

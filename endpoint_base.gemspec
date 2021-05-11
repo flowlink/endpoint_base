@@ -31,7 +31,7 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency 'rack-test'
 
   #rails
-  gem.add_development_dependency 'rails', '~> 6'
+  gem.add_development_dependency 'rails', '>= 6.1.3.2'
   gem.add_development_dependency 'rspec-rails'
   gem.add_development_dependency 'sqlite3'
 
